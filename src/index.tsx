@@ -5,9 +5,24 @@ interface AppProps {
   color?: string
 }
 
-class App extends Component<AppProps> {
-  state = {
+interface AppState {
+  counter: number
+}
+
+class App extends Component<AppProps, AppState> {
+  /* state = {
     counter: 0
+  } */
+
+  // Since we are extending component. about declaration overrides state.
+  // So no need of AppState Generic
+
+  constructor(props: AppProps) {
+    super(props)
+
+    this.state = {
+      counter: 0
+    }
   }
 
   onIncrement = (): void => {
